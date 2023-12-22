@@ -4,6 +4,7 @@
 #include <string>
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade) : name_(name) {
+  std::cout << "Bureaucrat " << name_ << " created." << std::endl;
   try {
     if (grade < MAX_GRADE) {
       grade_ = MAX_GRADE - 1;
@@ -16,7 +17,6 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade) : name_(name) {
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
-  std::cout << "Bureaucrat " << name_ << " created." << std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {
@@ -24,6 +24,7 @@ Bureaucrat::~Bureaucrat() {
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &other) : name_(other.name_) {
+std::cout << "Bureaucrat " << name_ << " created by copy." << std::endl;
   *this = other;
 }
 

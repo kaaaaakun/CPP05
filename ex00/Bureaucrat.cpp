@@ -24,7 +24,7 @@ Bureaucrat::~Bureaucrat() {
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &other) : name_(other.name_) {
-std::cout << "Bureaucrat " << name_ << " created by copy." << std::endl;
+  std::cout << "Bureaucrat " << name_ << " created by copy." << std::endl;
   *this = other;
 }
 

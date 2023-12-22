@@ -41,7 +41,7 @@ void gradeTest() {
 
 void constructorTest() {
   std::cout << YELLOW << "-- Constructor test -------" << std::endl;
-std::cout << "-- Create Grade1: ";
+  std::cout << "-- Create Grade1: ";
   Bureaucrat Grade1("GradeMan", 10);
   std::cout << Grade1 << std::endl;
   std::cout << "-- Copied to Grade2: ";
@@ -50,19 +50,20 @@ std::cout << "-- Create Grade1: ";
   std::cout << "-- Operate Grade3 = Grade1: ";
   Bureaucrat Grade3 = Grade1;
   std::cout << Grade3 << std::endl;
-std::cout << "-- Create Grade4: ";
+  std::cout << "-- Create Grade4: ";
   Bureaucrat Grade4("GradeMan4", 100);
-std::cout << "-- Operate Grade3 = Grade4: " << std::endl;
-Grade3 = Grade4;;
+  std::cout << "-- Operate Grade3 = Grade4: " << std::endl;
+  Grade3 = Grade4;
+  ;
   std::cout << Grade3 << std::endl;
   std::cout << Grade4 << std::endl;
-std::cout << "------------------" << std::endl;
+  std::cout << "------------------" << std::endl;
 }
 
 int main(void) {
   lowTest();
   heightTest();
   gradeTest();
-constructorTest();
+  constructorTest();
   return 0;
 }

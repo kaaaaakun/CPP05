@@ -6,27 +6,35 @@
 #    By: tokazaki <tokazaki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 16:08:51 by tokazaki          #+#    #+#              #
-#    Updated: 2023/12/19 02:31:01 by tokazaki         ###   ########.fr        #
+#    Updated: 2023/12/26 01:57:55 by tokazaki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# -- program name --
 NAME = main
 
-# Files & Command +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-SRCS	= $(wildcard *.cpp)
+# -- directories --
+INCLUDE = -I ./
+SRCDIR  = ./
+OBJDIR  = obj
+
+# -- files --
+SRCS    = $(wildcard *.cpp)
 HEADERS = $(wildcard *.hpp)
-OBJDIR	= obj
-OBJS    = $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
+OBJS    = $(addprefix $(OBJDIR)/, $(SRCDIR)/$(SRCS:.cpp=.o))
 DEPENDS	= $(OBJS:.o=.d)
 
-# -- flags --
-CXX 		= c++
-CXXFLAGS	= -Wall -Wextra -Werror
-CXXFLAGS	+= -std=c++98
-CXXFLAGS	+= -MMD -MP
+# -- compile flags --
+CXX      = c++
+CXXFLAGS = -g -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-# -- command --
-RM		= rm -rf
+# -- debug flags --
+NAME_DEBUG  = $(NAME)_debug
+DEBUG_FLAGS = -fsanitize=address -fsanitize=bounds
+OBJS_DEBUG  = $(addprefix $(OBJDIR)/, $(SRCDIR)/$(SRCS:.cpp=.o.debug))
+
+# -- command define	--
+RM = rm -rf
 
 # Mandatory target ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 .PHONY: all clean fclean re
@@ -34,9 +42,9 @@ RM		= rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ $(OBJS)
 
-$(OBJDIR)/%.o: %.cpp
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
@@ -45,8 +53,20 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(NAME_DEBUG)
 
 re: fclean all
+
+# Debug targets +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+.PHONY: debug
+debug: $(NAME_DEBUG)
+
+$(NAME_DEBUG): $(OBJS_DEBUG)
+	$(CXX) $(CXXFLAGS) $(DEBUG_FLAGS) $(INCLUDE) -o $@ $(OBJS_DEBUG)
+
+$(OBJDIR)/%.o.debug: $(SRCDIR)/%.cpp
+	@ mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) $(DEBUG_FLAGS) -o $@ -c $<
 
 # Other targets +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 .PHONY: format

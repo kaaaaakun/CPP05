@@ -22,7 +22,8 @@ class Bureaucrat {
   int grade_;
 
  public:
-  Bureaucrat(std::string const &name, int grade);
+Bureaucrat(std::string const &name, int grade) \
+	throw(GradeTooHighException, GradeTooLowException);
   Bureaucrat(Bureaucrat const &other);
   ~Bureaucrat();
   Bureaucrat &operator=(Bureaucrat const &other);

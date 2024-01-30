@@ -3,12 +3,6 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-std::string itoa(int i) {
-  std::stringstream ss;
-  ss << i;
-  return ss.str();
-}
-
 void testNormal() {
   std::cout << "--------- test Normal--------" << std::endl;
   Bureaucrat bureaucrat("B1", 42);

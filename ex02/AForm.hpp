@@ -17,7 +17,7 @@ class Form {
 
  public:
   Form(std::string const name, int const gradeSign, int const gradeExec);
-  ~Form();
+  virtual ~Form();
   Form(Form const &other);
   Form &operator=(Form const &other);
 

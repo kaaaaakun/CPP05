@@ -6,7 +6,7 @@
 
 int main() {
     // Create a bureaucrat
-    Bureaucrat bureaucrat("John", 100);
+    Bureaucrat bureaucrat("B42", 42);
 
     // Create an intern
     Intern intern;
@@ -26,7 +26,11 @@ int main() {
     bureaucrat.signAForm(*form3);
 
 	std::cout << *form1 << *form2 << *form3 << std::endl;
+    bureaucrat.signAForm(*form1);
+    bureaucrat.signAForm(*form2);
+    bureaucrat.signAForm(*form3);
 
+	std::cout << *form1 << *form2 << *form3 << std::endl;
     // Execute forms
     bureaucrat.executeForm(*form1);
     bureaucrat.executeForm(*form2);

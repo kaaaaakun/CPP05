@@ -43,9 +43,8 @@ class AForm {
    public:
     virtual const char *what() const throw();
   };
-
-  virtual std::ostream &operator<<(std::ostream &out, AForm const &form);
 };
 
+std::ostream &operator<<(std::ostream &out, AForm const &form);
 
 #endif  // FORM_HPP

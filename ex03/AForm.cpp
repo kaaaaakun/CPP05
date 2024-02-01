@@ -62,8 +62,8 @@ const char *AForm::FormNotSignedException::what() const throw() {
 }
 
 // Operator overload
-std::ostream &AForm::operator<<(std::ostream &out, AForm const &form) {
-  out << "AForm " << form.getName() << " is ";
+std::ostream &operator<<(std::ostream &out, AForm const &form) {
+  out << form.getName() << " is ";
   if (form.getSigned() == true)
     out << "signed";
   else

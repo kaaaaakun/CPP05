@@ -4,7 +4,7 @@
 
 // Constructor destructor copy constructor operator overload
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
-    : AForm("RobotomyRequestForm", 25, 5), target_(target) {}
+    : AForm("RobotomyRequestForm", 72, 45), target_(target) {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 

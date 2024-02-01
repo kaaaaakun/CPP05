@@ -63,11 +63,25 @@ void Bureaucrat::decrementGrade() {
 
 void Bureaucrat::signAForm(AForm &form) {
   try {
-    if (form.getSigned() == true) throw isSigned();
-    if (form.getGradeSign() < grade_) throw isBureaucratGradeLow();
-    form.beSigned(*this);
+    if (form.getSigned() == true)
+		throw isSigned();
+	if (form.getGradeSign() < grade_)
+		throw isBureaucratGradeLow();
+	else
+		form.beSigned(*this);
   } catch (std::exception &e) {
-    std::cout << name_ << "  couldn't sign " << form.getName() << " because "
+    std::cout << name_ << " couldn't sign " << form.getName() << " because "
+              << e.what() << std::endl;
+  }
+}
+
+void Bureaucrat::executeForm(AForm const &form) {
+  try {
+    if (form.getSigned() == false) throw isNotSigned();
+    form.execute(*this);
+    std::cout << name_ << " executes " << form.getName() << std::endl;
+  } catch (std::exception &e) {
+    std::cout << name_ << " couldn't execute " << form.getName() << " because "
               << e.what() << std::endl;
   }
 }
@@ -75,6 +89,9 @@ void Bureaucrat::signAForm(AForm &form) {
 // Signed Error
 const char *Bureaucrat::isSigned::what() const throw() {
   return "it is already signed.";
+}
+const char *Bureaucrat::isNotSigned::what() const throw() {
+  return "it isn't signed.";
 }
 const char *Bureaucrat::isBureaucratGradeLow::what() const throw() {
   return "Bureaucrat grade is too Low.";
@@ -86,18 +103,6 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
 }
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
   return "Grade too low.";
-}
-
-void Bureaucrat::executeForm(AForm const &form) {
-  try {
-    if (form.getSigned() == false) throw isSigned();
-    if (form.getGradeExec() < grade_) throw isBureaucratGradeLow();
-    form.execute(*this);
-    std::cout << name_ << " executes " << form.getName() << std::endl;
-  } catch (std::exception &e) {
-    std::cout << name_ << "  couldn't execute " << form.getName() << " because "
-              << e.what() << std::endl;
-  }
 }
 
 // Operator << overload

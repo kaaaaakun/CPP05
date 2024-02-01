@@ -4,7 +4,7 @@
 
 // Constructor destructor copy constructor operator overload
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
-    : AForm("RobotomyRequestForm", 25, 5), target_(target) {}
+    : AForm("RobotomyRequestForm", 72, 45), target_(target) {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
@@ -19,8 +19,8 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(
 }
 
 // execute
-static void RobotomySurgery(std::string target) {
-  if (rand() % 2)
+void RobotomySurgery(std::string target) {
+  if (std::rand() % 2)
     std::cout << target << " : It's a success!" << std::endl;
   else
     std::cout << target << " : It's a failure!" << std::endl;

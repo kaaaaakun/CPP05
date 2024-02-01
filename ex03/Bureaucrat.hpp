@@ -43,6 +43,10 @@ class Bureaucrat {
    public:
     virtual const char *what() const throw();
   };
+  class isNotSigned : public std::exception {
+   public:
+    virtual const char *what() const throw();
+  };
   class isBureaucratGradeLow : public std::exception {
    public:
     virtual const char *what() const throw();

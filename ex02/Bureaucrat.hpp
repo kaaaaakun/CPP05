@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 #define MAX_GRADE 1
 #define MIN_GRADE 150
@@ -18,7 +18,7 @@
 #define CYAN "\033[36m"
 #define BOLD "\033[1m"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
  private:
@@ -35,13 +35,15 @@ class Bureaucrat {
   int getGrade() const;
   void incrementGrade();
   void decrementGrade();
-  void signForm(Form &form);
+  void signAForm(AForm &form);
 
-  class isSigned : public std:: exception{
+  void executeForm(AForm const & form);
+
+  class isSigned : public std::exception {
    public:
     virtual const char *what() const throw();
   };
-  class isBureaucratGradeLow : public std:: exception{
+  class isBureaucratGradeLow : public std::exception {
    public:
     virtual const char *what() const throw();
   };

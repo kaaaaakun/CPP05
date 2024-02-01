@@ -1,29 +1,21 @@
-#ifndef SHRUBBERY_CREATION_FORM_HPP
-#define SHRUBBERY_CREATION_FORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
-#include <iostream>
-#include <random>
+#include "AForm.hpp"
 
-#include "Bureaucrat.hpp"
-
-class Bureaucrat;
-
-class ShrubberyCreationForm {
+class RobotomyRequestForm : public AForm {
  private:
-  std::string const name_;
-  bool signed_;
-  int gradeSign_ = 145;
-  int gradeExec_ 137;
+  std::string target_;
 
  public:
-  ShrubberyCreationForm(std::string const name, int const gradeSign, int const gradeExec);
-  ~ShrubberyCreationForm();
-  ShrubberyCreationForm(Form const &other);
-  ShrubberyCreationForm &operator=(Form const &other);
+  RobotomyRequestForm(std::string target);
+  virtual ~RobotomyRequestForm();
+  RobotomyRequestForm(RobotomyRequestForm const &other);
+  RobotomyRequestForm &operator=(RobotomyRequestForm const &other);
 
-
+virtual void execute(Bureaucrat const &executor) const;
 };
 
-std::ostream &operator<<(std::ostream &out, Form const &form);
+std::ostream &operator<<(std::ostream &out, RobotomyRequestForm const &form);
 
-#endif  //ShrubberyCreationForm_HPP
+#endif

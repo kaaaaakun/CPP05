@@ -61,12 +61,10 @@ void Bureaucrat::decrementGrade() {
   }
 }
 
-void Bureaucrat::signForm(Form &form) {
+void Bureaucrat::signAForm(AForm &form) {
   try {
-    if (form.getSigned() == true)
-		 throw isSigned();
-    if (form.getGradeSign() < grade_)
-	  	throw isBureaucratGradeLow();
+    if (form.getSigned() == true) throw isSigned();
+    if (form.getGradeSign() < grade_) throw isBureaucratGradeLow();
     form.beSigned(*this);
   } catch (std::exception &e) {
     std::cout << name_ << "  couldn't sign " << form.getName() << " because "
@@ -76,10 +74,10 @@ void Bureaucrat::signForm(Form &form) {
 
 // Signed Error
 const char *Bureaucrat::isSigned::what() const throw() {
-	return "it is already signed.";
+  return "it is already signed.";
 }
 const char *Bureaucrat::isBureaucratGradeLow::what() const throw() {
-	return "Bureaucrat grade is too Low.";
+  return "Bureaucrat grade is too Low.";
 }
 
 // Grade Errors
@@ -88,6 +86,18 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
 }
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
   return "Grade too low.";
+}
+
+void Bureaucrat::executeForm(AForm const & form) {
+  try {
+	if (form.getSigned() == false) throw isSigned();
+	if (form.getGradeExec() < grade_) throw isBureaucratGradeLow();
+	form.execute(*this);
+	std::cout << name_ << " executes " << form.getName() << std::endl;
+  } catch (std::exception &e) {
+	std::cout << name_ << "  couldn't execute " << form.getName() << " because "
+			  << e.what() << std::endl;
+  }
 }
 
 // Operator << overload

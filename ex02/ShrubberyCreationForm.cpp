@@ -30,7 +30,7 @@ static void PlantTree(std::string target) {
     std::cerr << "Cannot open file" << std::endl;
     return;
   }
-  file << "TREEEEEEEEEEEE" << std::endl;
+  file << ASCII_TREE << std::endl;
   file.close();
 }
 
@@ -49,7 +49,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &excutor) const {
 
 // Operator overload
 std::ostream &operator<<(std::ostream &out, ShrubberyCreationForm const &form) {
-  out << "ShrubberyCreationForm " << form.getName() << " is ";
+  out << form.getName() << " is ";
   if (form.getSigned() == true)
     out << "signed";
   else

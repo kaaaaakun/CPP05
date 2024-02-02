@@ -11,7 +11,7 @@ AForm::AForm(std::string const name, int const gradeSign, int const gradeExec)
   try {
     if (gradeSign < 1 || gradeExec < 1) throw AForm::GradeTooHighException();
     if (150 < gradeSign || 150 < gradeExec) throw AForm::GradeTooLowException();
-    std::cout << "AForm" << name_ << "created." << std::endl;
+	else std::cout << name_ << " created." << std::endl;
   } catch (const std::exception &e) {
     std::cerr << e.what() << std::endl;
   }
@@ -24,7 +24,7 @@ AForm::AForm(AForm const &other)
       signed_(other.signed_),
       gradeSign_(other.gradeSign_),
       gradeExec_(other.gradeExec_) {
-  std::cout << "AForm" << name_ << "created by copy." << std::endl;
+  std::cout  << name_ << " created by copy." << std::endl;
   *this = other;
 }
 
@@ -52,18 +52,16 @@ void AForm::beSigned(Bureaucrat &bureaucrat) {
 const char *AForm::GradeTooHighException::what() const throw() {
   return "Grade must be 1 or more.";
 }
-
 const char *AForm::GradeTooLowException::what() const throw() {
   return "Grade must be 150 or less.";
 }
-
 const char *AForm::FormNotSignedException::what() const throw() {
   return "Form is not signed.";
 }
 
 // Operator overload
 std::ostream &operator<<(std::ostream &out, AForm const &form) {
-  out << "AForm " << form.getName() << " is ";
+  out << form.getName() << " is ";
   if (form.getSigned() == true)
     out << "signed";
   else

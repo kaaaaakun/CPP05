@@ -36,7 +36,7 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
 
 // Operator overload
 std::ostream &operator<<(std::ostream &out, PresidentialPardonForm const &form) {
-  out << "PresidentialPardonForm " << form.getName() << " is ";
+  out << form.getName() << " is ";
   if (form.getSigned() == true)
     out << "signed";
   else

@@ -42,7 +42,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &excutor) const {
 
 // Operator overload
 std::ostream &operator<<(std::ostream &out, RobotomyRequestForm const &form) {
-  out << "RobotomySurgery " << form.getName() << " is ";
+  out << form.getName() << " is ";
   if (form.getSigned() == true)
     out << "signed";
   else

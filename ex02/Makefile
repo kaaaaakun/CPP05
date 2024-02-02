@@ -6,7 +6,7 @@
 #    By: tokazaki <tokazaki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 16:08:51 by tokazaki          #+#    #+#              #
-#    Updated: 2023/12/26 01:57:55 by tokazaki         ###   ########.fr        #
+#    Updated: 2024/02/02 14:06:39 by tokazaki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) *_shrubbery
 	$(RM) $(NAME_DEBUG)
 
 re: fclean all

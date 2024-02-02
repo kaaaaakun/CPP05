@@ -20,11 +20,12 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(
 
 // execute
 void RobotomySurgery(std::string target) {
+	std::cout << "ガガガ" << std::endl;
   std::srand(std::time(NULL));
   if (std::rand() % 2)
-    std::cout << target << " : It's a success!" << std::endl;
+    std::cout << target << " has been lobotomized successfully " << std::endl;
   else
-    std::cout << target << " : It's a failure!" << std::endl;
+    std::cout << target << " has been failured to robotize!" << std::endl;
 };
 
 void RobotomyRequestForm::execute(Bureaucrat const &excutor) const {

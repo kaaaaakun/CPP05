@@ -20,11 +20,12 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(
 
 // execute
 void RobotomySurgery(std::string target) {
-   std::srand(std::time(NULL));
-   if (std::rand() % 2)
-    std::cout << target << " : It's a success!" << std::endl;
+	std::cout << "ガガガ" << std::endl;
+  std::srand(std::time(NULL));
+  if (std::rand() % 2)
+    std::cout << target << " has been lobotomized successfully " << std::endl;
   else
-    std::cout << target << " : It's a failure!" << std::endl;
+    std::cout << target << " has been failured to robotize!" << std::endl;
 };
 
 void RobotomyRequestForm::execute(Bureaucrat const &excutor) const {
@@ -42,7 +43,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &excutor) const {
 
 // Operator overload
 std::ostream &operator<<(std::ostream &out, RobotomyRequestForm const &form) {
-  out << form.getName() << " is ";
+  out << "RobotomySurgery " << form.getName() << " is ";
   if (form.getSigned() == true)
     out << "signed";
   else
@@ -50,4 +51,3 @@ std::ostream &operator<<(std::ostream &out, RobotomyRequestForm const &form) {
         << " and requires " << form.getGradeSign() << " to sign. " << std::endl;
   return out;
 }
-

@@ -25,7 +25,9 @@ Form::Form(Form const &other)
 }
 
 Form &Form::operator=(Form const &other) {
-  signed_ = other.signed_;
+  if (this != &other) {
+    signed_ = other.signed_;
+  }
   return (*this);
 }
 

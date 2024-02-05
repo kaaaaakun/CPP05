@@ -6,7 +6,7 @@
 #    By: tokazaki <tokazaki@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 23:29:09 by tokazaki          #+#    #+#              #
-#    Updated: 2024/02/05 16:35:17 by kaaaaakun_       ###   ########.fr        #
+#    Updated: 2024/02/05 16:55:14 by tokazaki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SUBDIRS := $(wildcard */)
 all: $(SUBDIRS)
 
 $(SUBDIRS):
-	@echo "Make all..."
+	@echo "Make..."
 	$(MAKE) -C $@
 
 clean:

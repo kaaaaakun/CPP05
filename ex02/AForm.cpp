@@ -31,7 +31,9 @@ AForm::AForm(AForm const &other)
 }
 
 AForm &AForm::operator=(AForm const &other) {
-  signed_ = other.signed_;
+  if (this != &other) {
+    signed_ = other.signed_;
+  }
   return (*this);
 }
 

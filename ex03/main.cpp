@@ -4,42 +4,31 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-int main() {
-  // Create a bureaucrat
-  Bureaucrat bureaucrat("B42", 42);
-
-  // Create an intern
+void InternMakeForm(const std::string formName, const std::string target,
+                    const int grade) {
+  Bureaucrat bureaucrat("B" + std::to_string(grade), grade);
   Intern intern;
+  AForm* form;
+  try {
+    form = intern.makeForm(formName, target);
+  } catch (std::exception& e) {
+    std::cout << e.what() << std::endl;
+  }
+  std::cout << *form << std::endl;
+  bureaucrat.signAForm(*form);
+  bureaucrat.executeForm(*form);
+  delete form;
+}
 
-  // Create forms using the intern
-  AForm* form1 = intern.makeForm("presidential pardon", "target1");
-  AForm* form2 = intern.makeForm("robotomy request", "target2");
-  AForm* form3 = intern.makeForm("shrubbery creation", "target3");
-  AForm* form4 = intern.makeForm("shrubbery", "target4");
-
-  std::cout << *form1 << *form2 << *form3 << std::endl;
-  std::cout << form4 << std::endl;
-
-  // Sign forms
-  bureaucrat.signAForm(*form1);
-  bureaucrat.signAForm(*form2);
-  bureaucrat.signAForm(*form3);
-
-  std::cout << *form1 << *form2 << *form3 << std::endl;
-  bureaucrat.signAForm(*form1);
-  bureaucrat.signAForm(*form2);
-  bureaucrat.signAForm(*form3);
-
-  std::cout << *form1 << *form2 << *form3 << std::endl;
-  // Execute forms
-  bureaucrat.executeForm(*form1);
-  bureaucrat.executeForm(*form2);
-  bureaucrat.executeForm(*form3);
-
-  // Clean up
-  delete form1;
-  delete form2;
-  delete form3;
-
+int main() {
+  std::cout << "-----------------------" << std::endl;
+  InternMakeForm("presidential pardon", "target1", 42);
+  std::cout << "-----------------------" << std::endl;
+  InternMakeForm("robotomy request", "target2", 42);
+  std::cout << "-----------------------" << std::endl;
+  InternMakeForm("shrubbery creation", "target3", 42);
+  std::cout << "-----------------------" << std::endl;
+  InternMakeForm("miss", "miss", 1);
+  std::cout << "-----------------------" << std::endl;
   return 0;
 }

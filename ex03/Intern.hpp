@@ -29,6 +29,11 @@ class Intern {
   static AForm *createShrubberyCreationForm(std::string const &target);
 
   AForm *makeForm(std::string const &name, std::string const &target);
+
+  class FormNotFound  : public std::exception {
+   public:
+    virtual const char *what() const throw();
+  };
 };
 
 #endif  // INTERN_HPP

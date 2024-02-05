@@ -13,7 +13,7 @@ class PresidentialPardonForm : public AForm {
   PresidentialPardonForm(PresidentialPardonForm const &other);
   PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
 
-virtual void execute(Bureaucrat const &executor) const;
+  virtual void execute(Bureaucrat const &executor) const;
 };
 
 std::ostream &operator<<(std::ostream &out, PresidentialPardonForm const &form);

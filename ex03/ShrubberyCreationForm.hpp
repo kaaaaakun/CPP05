@@ -1,8 +1,8 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
 
-#include "tree.h"
 #include "AForm.hpp"
+#include "tree.h"
 
 class ShrubberyCreationForm : public AForm {
  private:

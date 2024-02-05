@@ -35,16 +35,12 @@ static void PlantTree(std::string target) {
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &excutor) const {
-  try {
-    if (excutor.getGrade() > getGradeExec())
-      throw AForm::GradeTooLowException();
-    else if (getSigned() == false)
-      throw AForm::FormNotSignedException();
-    else
-      PlantTree(this->target_);
-  } catch (const std::exception &e) {
-    std::cerr << e.what() << std::endl;
-  }
+  if (excutor.getGrade() > getGradeExec())
+    throw AForm::GradeTooLowException();
+  else if (getSigned() == false)
+    throw AForm::FormNotSignedException();
+  else
+    PlantTree(this->target_);
 }
 
 // Operator overload
@@ -57,4 +53,3 @@ std::ostream &operator<<(std::ostream &out, ShrubberyCreationForm const &form) {
         << " and requires " << form.getGradeSign() << " to sign. " << std::endl;
   return out;
 }
-

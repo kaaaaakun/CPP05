@@ -47,16 +47,14 @@ void testCannotSign() {
 void testTooHighGrade() {
   std::cout << "--------- test too hight grade --------" << std::endl;
   try {
-    std::cout << "form('F1', 0, 42)"
-              << std::endl;
+    std::cout << "form('F1', 0, 42)" << std::endl;
     Form form("F1", 0, 42);
   } catch (Form::GradeTooHighException &e) {
     std::cout << "GradeTooHighException caught" << std::endl;
   }
 
   try {
-    std::cout << "form('F1', 42, 0)"
-              << std::endl;
+    std::cout << "form('F1', 42, 0)" << std::endl;
     Form form("F1", 42, 0);
   } catch (Form::GradeTooHighException &e) {
     std::cout << "GradeTooHighException caught" << std::endl;
@@ -66,16 +64,14 @@ void testTooHighGrade() {
 void testTooLowGrade() {
   std::cout << "--------- test too low grade --------" << std::endl;
   try {
-    std::cout << "form('F1', 151, 42)"
-              << std::endl;
+    std::cout << "form('F1', 151, 42)" << std::endl;
     Form form("F1", 151, 42);
   } catch (Form::GradeTooLowException &e) {
     std::cout << "GradeTooLowException caught" << std::endl;
   }
 
   try {
-    std::cout << "form('F1', 42, 151)"
-              << std::endl;
+    std::cout << "form('F1', 42, 151)" << std::endl;
     Form form("F1", 42, 151);
   } catch (Form::GradeTooLowException &e) {
     std::cout << "GradeTooLowException caught" << std::endl;

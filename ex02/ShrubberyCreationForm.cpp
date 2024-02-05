@@ -57,4 +57,3 @@ std::ostream &operator<<(std::ostream &out, ShrubberyCreationForm const &form) {
         << " and requires " << form.getGradeSign() << " to sign. " << std::endl;
   return out;
 }
-

@@ -1,8 +1,8 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
 
-#include "tree.h"
 #include "AForm.hpp"
+#include "tree.h"
 
 class ShrubberyCreationForm : public AForm {
  private:
@@ -14,7 +14,7 @@ class ShrubberyCreationForm : public AForm {
   ShrubberyCreationForm(ShrubberyCreationForm const &other);
   ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
 
-virtual void execute(Bureaucrat const &executor) const;
+  virtual void execute(Bureaucrat const &executor) const;
 };
 
 std::ostream &operator<<(std::ostream &out, ShrubberyCreationForm const &form);

@@ -8,16 +8,9 @@ Form::Form(std::string const name, int const gradeSign, int const gradeExec)
       signed_(false),
       gradeSign_(gradeSign),
       gradeExec_(gradeExec) {
-  try
-  {
-    if (gradeSign < 1 || gradeExec < 1)
-      throw Form::GradeTooHighException();
-    if (150 < gradeSign || 150 < gradeExec)
-      throw Form::GradeTooLowException();
-    std::cout << "Form" << name_ << "created." << std::endl;
-  } catch(const std::exception& e) {
-    std::cerr << e.what() << std::endl;
-  }
+  if (gradeSign < 1 || gradeExec < 1) throw Form::GradeTooHighException();
+  if (150 < gradeSign || 150 < gradeExec) throw Form::GradeTooLowException();
+  std::cout << "Form" << name_ << "created." << std::endl;
 }
 
 Form::~Form() {}
@@ -47,7 +40,8 @@ void Form::beSigned(Bureaucrat &bureaucrat) {
   if (signed_ == false) {
     signed_ = true;
   }
-  std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
+  std::cout << bureaucrat.getName() << " signed " << this->getName()
+            << std::endl;
 }
 
 // Grade Errors
@@ -62,8 +56,9 @@ const char *Form::GradeTooLowException::what() const throw() {
 std::ostream &operator<<(std::ostream &out, Form const &form) {
   out << "Form " << form.getName() << " is ";
   if (form.getSigned() == true)
-      out << "signed";
+    out << "signed";
   else
-      out << "not signed" << " and requires " << form.getGradeSign() << " to sign. " << std::endl;
+    out << "not signed"
+        << " and requires " << form.getGradeSign() << " to sign. " << std::endl;
   return out;
 }

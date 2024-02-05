@@ -37,7 +37,7 @@ class Bureaucrat {
   void decrementGrade();
   void signAForm(AForm &form);
 
-  void executeForm(AForm const & form);
+  void executeForm(AForm const &form);
 
   class isSigned : public std::exception {
    public:

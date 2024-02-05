@@ -10,8 +10,10 @@ AForm::AForm(std::string const name, int const gradeSign, int const gradeExec)
       gradeExec_(gradeExec) {
   try {
     if (gradeSign < 1 || gradeExec < 1) throw AForm::GradeTooHighException();
-    if (150 < gradeSign || 150 < gradeExec) throw AForm::GradeTooLowException();
-	else std::cout << name_ << " created." << std::endl;
+    if (150 < gradeSign || 150 < gradeExec)
+      throw AForm::GradeTooLowException();
+    else
+      std::cout << name_ << " created." << std::endl;
   } catch (const std::exception &e) {
     std::cerr << e.what() << std::endl;
   }
@@ -24,7 +26,7 @@ AForm::AForm(AForm const &other)
       signed_(other.signed_),
       gradeSign_(other.gradeSign_),
       gradeExec_(other.gradeExec_) {
-  std::cout  << name_ << " created by copy." << std::endl;
+  std::cout << name_ << " created by copy." << std::endl;
   *this = other;
 }
 

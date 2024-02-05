@@ -21,17 +21,13 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(
 
 // execute
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
-  try {
-    if (executor.getGrade() > getGradeExec())
-      throw AForm::GradeTooLowException();
-    else if (getSigned() == false)
-      throw AForm::FormNotSignedException();
-    else
-      std::cout << target_ << " has been pardoned by Zafod Beeblebrox."
-                << std::endl;
-  } catch (const std::exception &e) {
-    std::cerr << e.what() << std::endl;
-  }
+  if (executor.getGrade() > getGradeExec())
+    throw AForm::GradeTooLowException();
+  else if (getSigned() == false)
+    throw AForm::FormNotSignedException();
+  else
+    std::cout << target_ << " has been pardoned by Zafod Beeblebrox."
+              << std::endl;
 }
 
 // Operator overload

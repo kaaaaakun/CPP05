@@ -8,13 +8,9 @@ AForm::AForm(std::string const name, int const gradeSign, int const gradeExec)
       signed_(false),
       gradeSign_(gradeSign),
       gradeExec_(gradeExec) {
-  try {
-    if (gradeSign < 1 || gradeExec < 1) throw AForm::GradeTooHighException();
-    if (150 < gradeSign || 150 < gradeExec) throw AForm::GradeTooLowException();
-    std::cout << name_ << " created." << std::endl;
-  } catch (const std::exception &e) {
-    std::cerr << e.what() << std::endl;
-  }
+  if (gradeSign < 1 || gradeExec < 1) throw AForm::GradeTooHighException();
+  if (150 < gradeSign || 150 < gradeExec) throw AForm::GradeTooLowException();
+  std::cout << name_ << " created." << std::endl;
 }
 
 AForm::~AForm() {}

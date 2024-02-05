@@ -37,11 +37,11 @@ class Bureaucrat {
   void decrementGrade();
   void signForm(Form &form);
 
-  class isSigned : public std:: exception{
+  class isSigned : public std::exception {
    public:
     virtual const char *what() const throw();
   };
-  class isBureaucratGradeLow : public std:: exception{
+  class isBureaucratGradeLow : public std::exception {
    public:
     virtual const char *what() const throw();
   };

@@ -1,6 +1,8 @@
 #include "RobotomyRequestForm.hpp"
-#include "AForm.hpp"
+
 #include <ctime>
+
+#include "AForm.hpp"
 
 // Constructor destructor copy constructor operator overload
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
@@ -20,7 +22,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(
 
 // execute
 void RobotomySurgery(std::string target) {
-	std::cout << "ガガガ" << std::endl;
+  std::cout << "ガガガ" << std::endl;
   std::srand(std::time(NULL));
   if (std::rand() % 2)
     std::cout << target << " has been lobotomized successfully " << std::endl;

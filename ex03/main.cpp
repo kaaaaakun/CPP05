@@ -29,7 +29,7 @@ int main() {
   std::cout << "-----------------------" << std::endl;
   InternMakeForm("shrubbery creation", "target3", 42);
   std::cout << "-----------------------" << std::endl;
-  InternMakeForm("miss", "miss", 1);
+  InternMakeForm("missForm", "miss", 1);
   std::cout << "-----------------------" << std::endl;
   return 0;
 }

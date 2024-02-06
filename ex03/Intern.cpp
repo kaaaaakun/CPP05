@@ -13,27 +13,27 @@ Intern &Intern::operator=(Intern const &other) {
 }
 
 AForm *Intern::makeForm(std::string const &name, std::string const &target) {
-	std::string Form[] = {"presidential pardon", "robotomy request", "shrubbery creation"};
-	int i = 0;
+  std::string Form[] = {"presidential pardon", "robotomy request",
+                        "shrubbery creation"};
+  int i = 0;
   for (; i < 3; i++) {
     if (name == Form[i]) {
       std::cout << "Intern creates " << name << std::endl;
-	  break ;
+      break;
     }
   }
 
-  switch (i)
-  {
-	  case 0:
-		  return (new PresidentialPardonForm(target));
-	  case 1: 
-		  return (new RobotomyRequestForm(target));
-	  case 2:
-		  return (new ShrubberyCreationForm(target));
-	  default:
-		  std::cout << "Intern cannot create " << name << std::endl;
-		  throw Intern::FormNotFound();
-		  return NULL;
+  switch (i) {
+    case 0:
+      return (new PresidentialPardonForm(target));
+    case 1:
+      return (new RobotomyRequestForm(target));
+    case 2:
+      return (new ShrubberyCreationForm(target));
+    default:
+      std::cout << "Intern cannot create " << name << std::endl;
+      throw Intern::FormNotFound();
+      return NULL;
   }
 }
 
@@ -46,4 +46,3 @@ std::ostream &operator<<(std::ostream &out, Intern const &form) {
   return (out);
   (void)form;
 }
-

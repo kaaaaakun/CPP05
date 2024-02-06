@@ -13,7 +13,7 @@ void InternMakeForm(const std::string formName, const std::string target,
     form = intern.makeForm(formName, target);
   } catch (std::exception& e) {
     std::cout << formName << " " << e.what() << std::endl;
-	return ;
+    return;
   }
   std::cout << *form << std::endl;
   bureaucrat.signAForm(*form);

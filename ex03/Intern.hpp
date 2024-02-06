@@ -30,7 +30,7 @@ class Intern {
 
   AForm *makeForm(std::string const &name, std::string const &target);
 
-  class FormNotFound  : public std::exception {
+  class FormNotFound : public std::exception {
    public:
     virtual const char *what() const throw();
   };
